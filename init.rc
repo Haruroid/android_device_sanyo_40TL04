@@ -200,7 +200,7 @@ on boot
     domainname localdomain
 
     mkdir /data/system 0775 system system
-    exec /sbin/ts_calibrator
+    #exec /sbin/ts_calibrator
 
 # set RLIMIT_NICE to allow priorities from 19 to -20
     setrlimit 13 40 40
@@ -512,4 +512,8 @@ service dumpstate /system/bin/dumpstate -s
     class main
     socket dumpstate stream 0660 shell log
     disabled
+    oneshot
+    
+service ts_calibrator /sbin/ts_calibrator
+    class main
     oneshot
